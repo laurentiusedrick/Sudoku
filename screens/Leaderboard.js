@@ -2,10 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default ({navigation, route}) => {
+const Leaderboard = ({navigation, route}) => {
   const {playAgain} = route.params || false
 
   return (
+    <>
       <View style={styles.container}>
         <Text>Leaderboard</Text>
         {playAgain && <Button title="Play again?" onPress={
@@ -13,6 +14,7 @@ export default ({navigation, route}) => {
         }/>}
         <StatusBar style="auto" />
       </View>
+    </>
   );
 }
 
@@ -24,3 +26,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Leaderboard

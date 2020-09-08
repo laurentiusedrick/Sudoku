@@ -1,33 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home, Game, Result } from './screens'
+import Home from './screens/Home'
+import Game from './screens/Game'
+import Result from './screens/Result'
+import { Provider } from 'react-redux'
+import store from './store'
 
 const Stack = createStackNavigator()
 
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={{
-          headerTitle: null
-        }
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} options={{
+            headerTitle: null
+          }
+          }/>
+          <Stack.Screen name="Game" component={Game} options={
+          {
+            headerLeft: null
+          }
         }/>
-        <Stack.Screen name="Game" component={Game} options={
-        {
-          headerLeft: null
-        }
-      }/>
-        <Stack.Screen name="Result" component={Result} options={
-        {
-          headerLeft: null
-        }
-      }/>
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="Result" component={Result} options={
+          {
+            headerLeft: null
+          }
+        }/>
+        </Stack.Navigator>
+      </NavigationContainer>  
+    </Provider>
   );
 }
 

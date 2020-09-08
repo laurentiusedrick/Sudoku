@@ -1,12 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, Button, BackHandler } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default ({navigation}) => {
+const Result = ({navigation, route}) => {
+  const dispatch = useDispatch()
+  const {cheat} = route.params
+
+  const disableBack = () => {
+    navigation.navigate('Leaderboard')
+  }
+
+  useEffect(()=>{
+    return () => {dispatch({type: 'RESET_GAMESTATE'})}
+  },[])
+
+  useFocusEffect(
+    React.useCallback(() => {
+    BackHandler.addEventListener('hardwareBackPress',disableBack);
+    return () => BackHandler.removeEventListener('hardwareBackPress',disableBack)
+  }, []))
+
+  
 
   return (
       <View style={styles.container}>
         <Text>End of the game</Text>
+        {cheat && <Text>You used Auto Solve! :(</Text>}
         <Button title="Go to Leaderboard" onPress={
           ()=>navigation.navigate('Leaderboard', {
             playAgain: true
@@ -25,3 +46,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Result
