@@ -11,7 +11,9 @@ export default () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Start" component={Start}/>
-      <Tab.Screen name="Leaderboard" component={Leaderboard}/>
+      <Tab.Screen name="Leaderboard" component={Leaderboard} initialParams={{
+        playAgain: false
+      }}/>
     </Tab.Navigator>
   );
 }

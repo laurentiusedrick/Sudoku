@@ -1,16 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default ({navigation, route}) => {
-  const {playAgain} = route.params || false
+export default ({navigation}) => {
 
   return (
       <View style={styles.container}>
-        <Text>Leaderboard</Text>
-        {playAgain && <Button title="Play again?" onPress={
-          ()=>navigation.navigate('Game')
-        }/>}
+        <Text>End of the game</Text>
+        <Button title="Go to Leaderboard" onPress={
+          ()=>navigation.navigate('Leaderboard', {
+            playAgain: true
+          })
+        }/>
         <StatusBar style="auto" />
       </View>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home, Game } from './screens'
+import { Home, Game, Result } from './screens'
 
 const Stack = createStackNavigator()
 
@@ -13,7 +13,16 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home}/>
-        <Stack.Screen name="Game" component={Game}/>
+        <Stack.Screen name="Game" component={Game} options={
+        {
+          headerLeft: null
+        }
+      }/>
+        <Stack.Screen name="Result" component={Result} options={
+        {
+          headerLeft: null
+        }
+      }/>
       </Stack.Navigator>
     </NavigationContainer>
   );
