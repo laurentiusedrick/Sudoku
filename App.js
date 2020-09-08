@@ -12,7 +12,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Home" component={Home} options={{
+          headerTitle: null
+        }
+        }/>
         <Stack.Screen name="Game" component={Game} options={
         {
           headerLeft: null
