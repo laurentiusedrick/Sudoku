@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import Icon from 'react-native-vector-icons/FontAwesome5'
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux'
 import { getBoard } from '../store/actions/gameActions';
 
-const Start = ({navigation}) => {
+const Start = ({ navigation }) => {
   const dispatch = useDispatch()
 
   const [info, setInfo] = useState({
@@ -16,11 +14,11 @@ const Start = ({navigation}) => {
   const [errMsg, setErrMsg] = useState('')
 
   const handleNameChange = text => {
-    setInfo({...info, name: text})
+    setInfo({ ...info, name: text })
   }
 
   const handleDiffChange = text => {
-    setInfo({...info, difficulty: text})
+    setInfo({ ...info, difficulty: text })
   }
 
   const handleStart = () => {
@@ -43,34 +41,33 @@ const Start = ({navigation}) => {
     else setErrMsg('Please choose the difficulty')
   }
 
-  const difficultyArray = ['easy','medium','hard']
+  const difficultyArray = ['easy', 'medium', 'hard']
 
   return (
     <>
-
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to Sugoku!</Text>
         <Text>Please put in your name and the preferred difficulty</Text>
-        <TextInput style={styles.nameInput} placeholder="Name.." onChangeText={handleNameChange}/>
+        <TextInput style={styles.nameInput} placeholder="Name.." onChangeText={handleNameChange} value={info.name} />
         <View style={styles.difficultySelector}>
-        <FlatList
-          horizontal
-          contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
-          data={difficultyArray}
-          renderItem={({item, i, separator}) => (
-            <TouchableOpacity style={info.difficulty === item ? [styles.difficultySelected, styles.difficulty] : styles.difficulty} onPress={() => handleDiffChange(item)}>
-              <Text style={{textTransform:'capitalize'}}>{item}</Text>
-            </TouchableOpacity>
+          <FlatList
+            horizontal
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+            data={difficultyArray}
+            renderItem={({ item, i, separator }) => (
+              <TouchableOpacity style={info.difficulty === item ? [styles.difficultySelected, styles.difficulty] : styles.difficulty} onPress={() => handleDiffChange(item)}>
+                <Text style={{ textTransform: 'capitalize' }}>{item}</Text>
+              </TouchableOpacity>
             )
-          }
-          keyExtractor={(item,i) => String(i)}
-        />
+            }
+            keyExtractor={(item, i) => String(i)}
+          />
         </View>
-        <Button 
+        <Button
           title="Play Sugoku!"
           onPress={handleStart}
         />
-        <Text style={{color: 'red', marginTop: 10}}>{errMsg}</Text>
+        <Text style={{ color: 'red', marginTop: 10 }}>{errMsg}</Text>
       </View>
     </>
   );
@@ -82,8 +79,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#4287f5',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection:'row',
-    flexWrap:'wrap',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     maxHeight: 70
   },
   title: {
@@ -111,8 +108,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   difficultySelector: {
-    flexDirection:'row',
-    flexWrap:'wrap',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginBottom: 30
   },
   difficulty: {

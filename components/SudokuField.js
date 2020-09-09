@@ -8,7 +8,7 @@ const SudokuField = (props) => {
     container: {
       width: 40,
       height: 40,
-      borderWidth: 0.5, 
+      borderWidth: 0.5,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
@@ -28,7 +28,7 @@ const SudokuField = (props) => {
   })
 
   return (
-    <TouchableOpacity style={[styles.container, props.selected ? styles.selected:styles.unselected]} onPress={props.onSelectBox}>
+    <TouchableOpacity style={[styles.container, props.selected ? styles.selected : styles.unselected]} onPress={props.onSelectBox}>
       <Text style={styles.valueText}>{props.value}</Text>
     </TouchableOpacity>
   )

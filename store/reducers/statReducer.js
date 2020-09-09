@@ -1,20 +1,11 @@
 const initialState = {
   stat: []
 }
-// const initialState = {
-//    stat: [{
-//      name: '',
-//      difficulty: '',
-//      time: 0
-//    }]
-// }
 
-
-
-const statReducer = (state=initialState, action) => {
+const statReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_STAT':
-      return {...state, stat: action.payload}
+    case 'ADD_STAT':
+      return { ...state, stat: state.stat.concat(action.payload) }
     default:
       return state
   }

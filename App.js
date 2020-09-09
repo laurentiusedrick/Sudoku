@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -23,11 +22,13 @@ export default function App() {
           }/>
           <Stack.Screen name="Game" component={Game} options={
           {
+            headerTitle: null,
             headerLeft: null
           }
         }/>
           <Stack.Screen name="Result" component={Result} options={
           {
+            headerTitle: null,
             headerLeft: null
           }
         }/>

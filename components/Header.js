@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 const Header = () => {
   return (
     <View style={styles.containerTitle}>
-      <Icon name="sort-numeric-down" size={40} color="#fff"/>
+      <Icon name="sort-numeric-down" size={40} color="#fff" />
       <Text style={styles.title}>SUGOKU</Text>
     </View>
   )
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#4287f5',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection:'row',
-    flexWrap:'wrap',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     maxHeight: 70
   },
   title: {
