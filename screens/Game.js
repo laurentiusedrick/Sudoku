@@ -34,14 +34,6 @@ const Game = ({ navigation }) => {
       setTimer(time)
       if (!time) {
         clearInterval(interval)
-        dispatch({
-          type: 'ADD_STAT',
-          payload: {
-            name,
-            difficulty,
-            time: 'OUT'
-          }
-        })
         navigation.navigate('Result', {
           cheat,
           timeOut: true,
@@ -117,14 +109,19 @@ const Game = ({ navigation }) => {
       }, 3000)
     }
     else if (done) {
-      dispatch({
-        type: 'ADD_STAT',
-        payload: {
-          name,
-          difficulty,
-          time: cheat ? 'N/A' : timerTranslator(Math.abs(timer - timerBegin()))
-        }
-      })
+      if (!cheat) {
+        dispatch({
+          type: 'ADD_STAT',
+          payload: {
+            name,
+            difficulty,
+            time: {
+              int: Math.abs(timer - timerBegin()),
+              str: timerTranslator(Math.abs(timer - timerBegin()))
+            }
+          }
+        })
+      }
       navigation.navigate('Result', {
         cheat,
         timeOut: false,

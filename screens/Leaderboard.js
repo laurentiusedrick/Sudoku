@@ -25,6 +25,13 @@ const Leaderboard = ({ navigation, route }) => {
     }
   }
 
+  const sortedStat = () => {
+    if (!stat.length) return stat
+    return stat.sort(function (a, b) {
+      return a.time.int - b.time.int
+    })
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -32,12 +39,12 @@ const Leaderboard = ({ navigation, route }) => {
         <LeaderboardCard
           name={'Name'}
           difficulty={'Difficulty'}
-          time={'Time'}
+          time={{str:'Time'}}
           isTitle={true}
         />
         {!stat.length && <Text style={{ marginTop: 100 }}>==================//////==================</Text>}
         <FlatList
-          data={stat}
+          data={sortedStat()}
           contentContainerStyle={{ flexDirection: 'column', justifyContent: 'center' }}
           renderItem={({ item, i, separator }) => (
             <LeaderboardCard

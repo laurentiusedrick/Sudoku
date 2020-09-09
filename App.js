@@ -19,21 +19,21 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} options={{
             headerTitle: null
           }
-          }/>
+          } />
           <Stack.Screen name="Game" component={Game} options={
-          {
-            headerTitle: null,
-            headerLeft: null
-          }
-        }/>
+            {
+              headerTitle: null,
+              headerLeft: null
+            }
+          } />
           <Stack.Screen name="Result" component={Result} options={
-          {
-            headerTitle: null,
-            headerLeft: null
-          }
-        }/>
+            {
+              headerTitle: null,
+              headerLeft: null
+            }
+          } />
         </Stack.Navigator>
-      </NavigationContainer>  
+      </NavigationContainer>
     </Provider>
   );
 }

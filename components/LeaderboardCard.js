@@ -23,7 +23,7 @@ const LeaderboardCard = (props) => {
   return (
     <View style={[styles.container, props.isTitle ? styles.title : styles.container]}>
       <Text style={styles.valueText}>{props.name.slice(0, 18)}</Text>
-      <Text style={styles.valueText}>{props.difficulty} :: {props.time}</Text>
+      <Text style={styles.valueText}>{props.difficulty} :: {props.time.str}</Text>
     </View>
   )
 }
